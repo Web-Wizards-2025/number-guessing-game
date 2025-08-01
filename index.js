@@ -1,6 +1,9 @@
 "use strict";
 
 function checkGuess (playerGuess, answer) {
+
+    let output;
+
     if (playerGuess < answer) {
         output = `Mwahahaha your guess is too low!`
     }
