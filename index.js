@@ -72,18 +72,18 @@ function checkGuessValidity(inputString, inputNumber) {
   return true;
 }
 
-function checkGuess (playerGuessNumber, answer) {
+function checkGuess(playerGuessNumber, answer) {
+  let output;
 
-    let output;
+  if (playerGuessNumber < answer) {
+    output = `Mwahahaha your guess is too low!`;
+  }
 
-    if (playerGuessNumber < answer) {
-        output = `Mwahahaha your guess is too low!`
-    }
+  if (playerGuessNumber > answer) {
+    output = `You're making me laugh, your guess is too high!`;
+  }
 
-    if (playerGuessNumber > answer) {
-        output = `You're making me laugh, your guess is too high!`
-    }
-
-    if (playerGuessNumber === answer) {
-        output = `How did you know...it's not fair! You guessed correctly! The answer was ${answer}.`
-    }
+  if (playerGuessNumber === answer) {
+    output = `How did you know...it's not fair! You guessed correctly! The answer was ${answer}.`;
+  }
+}
