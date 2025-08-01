@@ -1,6 +1,7 @@
 "use strict";
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 const randomNumber = generateRandomNumber(1, 100);
 
 function generateRandomNumber(min, max) {
@@ -73,6 +74,8 @@ function checkGuessValidity(inputString, inputNumber) {
   return true;
 }
 =======
+=======
+>>>>>>> 4710670accd44bc6c2d260677888efbab3967972
 function checkGuess (playerGuess, answer) {
 
     let output;
@@ -90,5 +93,9 @@ function checkGuess (playerGuess, answer) {
     }
 
     return output;
+<<<<<<< HEAD
 }
 >>>>>>> cefe821 (1 - main function of checkGuess)
+=======
+}
+>>>>>>> 4710670accd44bc6c2d260677888efbab3967972
