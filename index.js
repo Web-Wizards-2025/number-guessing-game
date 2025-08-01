@@ -4,7 +4,7 @@
  1. Gets the player guess
  2. Checks for guess validity
  3. The user will be repromped to enter a number as long as they keep entering an invalid input
- 4. When the number is valid it gets returned
+ 4. When the number is valid it gets returne
  */
 function getPlayerGuess() {
   let playerGuessInput;
