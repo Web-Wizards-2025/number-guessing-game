@@ -71,3 +71,19 @@ function checkGuessValidity(inputString, inputNumber) {
   // Returns true if all checks get passed
   return true;
 }
+
+function checkGuess (playerGuessNumber, answer) {
+
+    let output;
+
+    if (playerGuessNumber < answer) {
+        output = `Mwahahaha your guess is too low!`
+    }
+
+    if (playerGuessNumber > answer) {
+        output = `You're making me laugh, your guess is too high!`
+    }
+
+    if (playerGuessNumber === answer) {
+        output = `How did you know...it's not fair! You guessed correctly! The answer was ${answer}.`
+    }
