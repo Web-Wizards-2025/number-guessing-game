@@ -1,7 +1,5 @@
 "use strict";
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 const randomNumber = generateRandomNumber(1, 100);
 
 function generateRandomNumber(min, max) {
@@ -73,29 +71,19 @@ function checkGuessValidity(inputString, inputNumber) {
   // Returns true if all checks get passed
   return true;
 }
-=======
-=======
->>>>>>> 4710670accd44bc6c2d260677888efbab3967972
-function checkGuess (playerGuess, answer) {
+
+function checkGuess (playerGuessNumber, answer) {
 
     let output;
 
-    if (playerGuess < answer) {
+    if (playerGuessNumber < answer) {
         output = `Mwahahaha your guess is too low!`
     }
 
-    if (playerGuess > answer) {
+    if (playerGuessNumber > answer) {
         output = `You're making me laugh, your guess is too high!`
     }
 
-    if (playerGuess === answer) {
+    if (playerGuessNumber === answer) {
         output = `How did you know...it's not fair! You guessed correctly! The answer was ${answer}.`
     }
-
-    return output;
-<<<<<<< HEAD
-}
->>>>>>> cefe821 (1 - main function of checkGuess)
-=======
-}
->>>>>>> 4710670accd44bc6c2d260677888efbab3967972
