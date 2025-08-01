@@ -86,4 +86,6 @@ function checkGuess(playerGuessNumber, answer) {
   if (playerGuessNumber === answer) {
     output = `How did you know...it's not fair! You guessed correctly! The answer was ${answer}.`;
   }
+
+  return output;
 }
