@@ -10,116 +10,112 @@ function getPlayerGuess() {
   let playerGuessInput;
   let playerGuessNumber;
 
-  // This loop will continue as long as the input is invalid
   while (true) {
     playerGuessInput = prompt(
       "Guess the secret number. It's an integer between 1 and 100"
     );
     playerGuessNumber = Number(playerGuessInput);
 
-    // Checks if the input is valid based on all criterias and stores the boolean result in a variable
     let isGuessValid = checkGuessValidity(playerGuessInput, playerGuessNumber);
 
-    // If all checks pass, isValid will still be true, and the loop can be broken
-    if (isGuessValid) break; // Exit the while loop
-    // If isValid is false, the loop will continue, prompting the user again
+    if (isGuessValid) break;
   }
 
-  // After the loop, playerGuessNum is guaranteed to be a valid integer between 1 and 100
   console.log(`You guessed ${playerGuessNumber}`);
   return playerGuessNumber;
 }
 
-// Checks whether the input is valid based on all criterias
 function checkGuessValidity(inputString, inputNumber) {
-  // Handles a non-existent input
   if (!inputString) {
     console.log(
       "No input was provided. Please type an integer number between 1 and 100"
     );
     return false;
-  }
-  // Handles an input that results in not a number (a string input)
-  else if (isNaN(inputNumber)) {
+  } else if (isNaN(inputNumber)) {
     console.log(
       `"${inputString}" is not a number. Please type an integer number between 1 and 100`
     );
     return false;
-  }
-  // Handles a non-integer number
-  else if (!Number.isInteger(inputNumber)) {
+  } else if (!Number.isInteger(inputNumber)) {
     console.log(
       `${inputNumber} is not a valid number because it's not an integer. Please type an integer number between 1 and 100`
     );
     return false;
-  }
-  // Handles a number less than 1
-  else if (inputNumber < 1) {
+  } else if (inputNumber < 1) {
     console.log(
       `${inputNumber} is not a valid number because it's less than 1. The number must be an integer between 1 and 100`
     );
     return false;
-  }
-  // Handles a number greater than 100
-  else if (inputNumber > 100) {
+  } else if (inputNumber > 100) {
     console.log(
       `${inputNumber} is not a valid number because it's greater than 100. The number must be an integer between 1 and 100`
     );
     return false;
   }
 
-  // Returns true if all checks get passed
   return true;
 }
 
 function checkGuess(playerGuessNumber, answer) {
   let output;
+  let isAnswerCorrect;
 
   if (playerGuessNumber < answer) {
     output = `Mwahahaha your guess is too low!`;
+    isAnswerCorrect = false;
   }
 
   if (playerGuessNumber > answer) {
     output = `You're making me laugh, your guess is too high!`;
+    isAnswerCorrect = false;
   }
 
   if (playerGuessNumber === answer) {
     output = `How did you know...it's not fair! You guessed correctly! The answer was ${answer}.`;
+    isAnswerCorrect = true;
   }
 
-  return output;
+  return { output, isAnswerCorrect };
 }
 
 function game() {
-  const secret = generateRandomNumber();
+  const secret = 10;
+  // const secret = generateRandomNumber(1, 100);
   let attempts = 0;
   const maxAttempts = 10;
   let won = false;
 
   alert(
-    "¡Bienvenido al Juego de Adivinanza!\nTienes 10 intentos para adivinar un número entre 1 y 100."
+    "Welcome to the Guessing Game!\nYou have 10 attempts to guess a number between 1 and 100."
   );
 
   while (attempts < maxAttempts) {
     const guess = getPlayerGuess();
-    attempts++;
     const result = checkGuess(guess, secret);
 
-    if (result === "¡Correcto!") {
-      alert(`¡Ganaste! El número era ${secret}.\nIntentos usados: ${attempts}`);
+    if (result.isAnswerCorrect) {
+      console.log(
+        `You won! The number was ${secret}.\nAmount of attempts used: ${attempts}`
+      );
       won = true;
       break;
     } else {
-      alert(`${result}. Intentos restantes: ${maxAttempts - attempts}`);
+      attempts++;
+      console.log(
+        `${result.output}. Remaining attempts: ${maxAttempts - attempts}`
+      );
     }
   }
 
   if (!won) {
-    alert(`¡Perdiste! El número era ${secret}.\nIntentos usados: ${attempts}`);
+    console.log(
+      `You lost! The number was ${secret}.\nAmount of attempts used: ${attempts}`
+    );
   }
 
-  // Bonus: Puntos
   let score = 0;
-  if (won) score = 100 - (attempts - 1) * 10; // Por ejemplo: más puntos si aciertas rápido
-  alert(`Puntaje: ${score}`);
+  if (won) score = 100 - (attempts - 1) * 10;
+  console.log(`Score: ${score}`);
 }
+
+game();
