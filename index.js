@@ -79,8 +79,7 @@ function checkGuess(playerGuessNumber, answer) {
 }
 
 function game() {
-  const secret = 10;
-  // const secret = generateRandomNumber(1, 100);
+  const secret = generateRandomNumber(1, 100);
   let attempts = 0;
   const maxAttempts = 10;
   let won = false;
