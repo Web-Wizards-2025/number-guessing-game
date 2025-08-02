@@ -101,7 +101,7 @@ function game() {
     } else {
       attempts++;
       console.log(
-        `${result.output}. Remaining attempts: ${maxAttempts - attempts}`
+        `${result.output} Remaining attempts: ${maxAttempts - attempts}`
       );
     }
   }
