@@ -89,3 +89,37 @@ function checkGuess(playerGuessNumber, answer) {
 
   return output;
 }
+
+function game() {
+  const secret = generateRandomNumber();
+  let attempts = 0;
+  const maxAttempts = 10;
+  let won = false;
+
+  alert(
+    "¡Bienvenido al Juego de Adivinanza!\nTienes 10 intentos para adivinar un número entre 1 y 100."
+  );
+
+  while (attempts < maxAttempts) {
+    const guess = getPlayerGuess();
+    attempts++;
+    const result = checkGuess(guess, secret);
+
+    if (result === "¡Correcto!") {
+      alert(`¡Ganaste! El número era ${secret}.\nIntentos usados: ${attempts}`);
+      won = true;
+      break;
+    } else {
+      alert(`${result}. Intentos restantes: ${maxAttempts - attempts}`);
+    }
+  }
+
+  if (!won) {
+    alert(`¡Perdiste! El número era ${secret}.\nIntentos usados: ${attempts}`);
+  }
+
+  // Bonus: Puntos
+  let score = 0;
+  if (won) score = 100 - (attempts - 1) * 10; // Por ejemplo: más puntos si aciertas rápido
+  alert(`Puntaje: ${score}`);
+}
