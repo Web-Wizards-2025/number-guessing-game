@@ -108,8 +108,7 @@ function game() {
   let won = false;
 
   while (attempts < maxAttempts) {
-    const guess = getPlayerGuess();
-    if (guess === null) return;
+    const guess = getPlayerGuess(); // Ahora getPlayerGuess ya maneja cancelación y validez.
     const result = checkGuess(guess, secret);
 
     if (result.isAnswerCorrect) {
@@ -135,6 +134,7 @@ function game() {
   if (won) score = 100 - (attempts - 1) * 10;
   console.log(`⭐️ Your Score: ${score}`);
 }
+
 
 
 game();
