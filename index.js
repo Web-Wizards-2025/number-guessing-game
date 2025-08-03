@@ -18,6 +18,7 @@ function getPlayerGuess() {
 
     let isGuessValid = checkGuessValidity(playerGuessInput, playerGuessNumber);
 
+    if (isGuessValid === null) return null;
     if (isGuessValid) break;
   }
 
@@ -26,29 +27,32 @@ function getPlayerGuess() {
 }
 
 function checkGuessValidity(inputString, inputNumber) {
-  if (!inputString) {
+  if (inputString === "") {
     console.log(
-      "No input was provided. Please type an integer number between 1 and 100"
+      "⚠️ No input was provided. Please type an integer number between 1 and 100"
     );
     return false;
+  } else if (inputString === null) {
+    alert("Game cancelled. See you next time!");
+    return null;
   } else if (isNaN(inputNumber)) {
     console.log(
-      `"${inputString}" is not a number. Please type an integer number between 1 and 100`
+      `"⚠️ ${inputString}" is not a number. Please type an integer number between 1 and 100`
     );
     return false;
   } else if (!Number.isInteger(inputNumber)) {
     console.log(
-      `${inputNumber} is not a valid number because it's not an integer. Please type an integer number between 1 and 100`
+      `⚠️ ${inputNumber} is not a valid number because it's not an integer. Please type an integer number between 1 and 100`
     );
     return false;
   } else if (inputNumber < 1) {
     console.log(
-      `${inputNumber} is not a valid number because it's less than 1. The number must be an integer between 1 and 100`
+      `⚠️ ${inputNumber} is not a valid number because it's less than 1. The number must be an integer between 1 and 100`
     );
     return false;
   } else if (inputNumber > 100) {
     console.log(
-      `${inputNumber} is not a valid number because it's greater than 100. The number must be an integer between 1 and 100`
+      `⚠️ ${inputNumber} is not a valid number because it's greater than 100. The number must be an integer between 1 and 100`
     );
     return false;
   }
@@ -90,6 +94,7 @@ function game() {
 
   while (attempts < maxAttempts) {
     const guess = getPlayerGuess();
+    if (guess === null) return;
     const result = checkGuess(guess, secret);
 
     if (result.isAnswerCorrect) {
