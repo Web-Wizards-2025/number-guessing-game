@@ -82,26 +82,28 @@ function checkGuess(playerGuessNumber, answer) {
   return { output, isAnswerCorrect };
 }
 
-function game() {
-  alert(
-    "🎮 Welcome to the Number Guessing Game!\n\n" +
+alert(
+  "🎮 Welcome to the Number Guessing Game!\n\n" +
     "To play, you need to open the browser console to see game results and feedback.\n\n" +
     "👉 How to open the console:\n" +
     "- Chrome/Edge: Press Ctrl+Shift+J (Windows) or Cmd+Option+J (Mac)\n" +
     "- Firefox: Press Ctrl+Shift+K (Windows) or Cmd+Option+K (Mac)\n\n" +
     "Once the game starts, follow the prompts and enter your guesses. Good luck!"
-  );
+);
 
-  alert(
-    "INSTRUCTIONS:\n\n" +
+alert(
+  "INSTRUCTIONS:\n\n" +
     "1. The computer has chosen a secret number between 1 and 100.\n" +
     "2. You have 10 attempts to guess it.\n" +
     "3. After each guess, check the console for hints (Too High / Too Low).\n" +
     "4. Enter an integer between 1 and 100 in each prompt.\n" +
     "5. Your score depends on how quickly you guess the number.\n\n" +
     "Cancel the prompt to quit early."
-  );
+);
 
+setTimeout(game, 1);
+
+function game() {
   const secret = generateRandomNumber(1, 100);
   let attempts = 0;
   const maxAttempts = 10;
@@ -110,6 +112,13 @@ function game() {
   while (attempts < maxAttempts) {
     const guess = getPlayerGuess(); // Ahora getPlayerGuess ya maneja cancelación y validez.
     const result = checkGuess(guess, secret);
+
+    if (guess === null) {
+      console.log("🚪 Game was cancelled by the player.");
+      return; // ✅ exit game early
+    }
+
+    attempts++;
 
     if (result.isAnswerCorrect) {
       console.log(
@@ -134,7 +143,3 @@ function game() {
   if (won) score = 100 - (attempts - 1) * 10;
   console.log(`⭐️ Your Score: ${score}`);
 }
-
-
-
-game();
