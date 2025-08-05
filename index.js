@@ -88,9 +88,7 @@ alert(
     "👉 How to open the console:\n" +
     "- Chrome/Edge: Press Ctrl+Shift+J (Windows) or Cmd+Option+J (Mac)\n" +
     "- Firefox: Press Ctrl+Shift+K (Windows) or Cmd+Option+K (Mac)\n\n" +
-    "- F12 key also works in most browsers.\n\n" +
-    "After the developer tools panel is open, navigate to the 'console' tab if you're not already in there, that's where you will see the game outputs.\n" +
-    "Once you're in the 'console' tab, you can start the game by clicking 'OK' on this alert.\n\n" +
+    "Once the console is opened, you can start the game by clicking 'OK' on this alert.\n\n" +
     "Once the game starts, follow the prompts and enter your guesses. Good luck!"
 );
 
@@ -101,7 +99,7 @@ alert(
     "3. After each guess, check the console for hints (Too High / Too Low).\n" +
     "4. Enter an integer between 1 and 100 in each prompt.\n" +
     "5. Your score depends on how quickly you guess the number.\n\n" +
-    "Cancel one of the next prompts to quit early."
+    "Cancel the prompt to quit early."
 );
 
 setTimeout(game, 1);
