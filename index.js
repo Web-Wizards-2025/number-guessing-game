@@ -88,6 +88,8 @@ alert(
     "👉 How to open the console:\n" +
     "- Chrome/Edge: Press Ctrl+Shift+J (Windows) or Cmd+Option+J (Mac)\n" +
     "- Firefox: Press Ctrl+Shift+K (Windows) or Cmd+Option+K (Mac)\n\n" +
+    "After the console is open, navigate to the 'console' tab, where you will se the game outputs.\n" +
+    "Once you're in the 'console' tab, you can start the game by clicking 'OK' on this alert.\n\n" +
     "Once the game starts, follow the prompts and enter your guesses. Good luck!"
 );
 
@@ -98,7 +100,7 @@ alert(
     "3. After each guess, check the console for hints (Too High / Too Low).\n" +
     "4. Enter an integer between 1 and 100 in each prompt.\n" +
     "5. Your score depends on how quickly you guess the number.\n\n" +
-    "Cancel the prompt to quit early."
+    "Cancel one of the next prompts to quit early."
 );
 
 setTimeout(game, 1);
@@ -118,8 +120,6 @@ function game() {
       return; // ✅ exit game early
     }
 
-    attempts++;
-
     if (result.isAnswerCorrect) {
       console.log(
         `🎉 You won! The secret number was ${secret}.\nAttempts used: ${attempts}`
@@ -127,6 +127,7 @@ function game() {
       won = true;
       break;
     } else {
+      attempts++;
       console.log(
         `${result.output} | Remaining attempts: ${maxAttempts - attempts}`
       );
