@@ -113,12 +113,12 @@ function game() {
   let won = false;
 
   while (attempts < maxAttempts) {
-    const guess = getPlayerGuess(); // Ahora getPlayerGuess ya maneja cancelación y validez.
+    const guess = getPlayerGuess();
     const result = checkGuess(guess, secret);
 
     if (guess === null) {
       console.log("🚪 Game was cancelled by the player.");
-      return; // ✅ exit game early
+      return;
     }
 
     if (result.isAnswerCorrect) {
