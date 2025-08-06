@@ -88,6 +88,7 @@ alert(
     "👉 How to open the console:\n" +
     "- Chrome/Edge: Press Ctrl+Shift+J (Windows) or Cmd+Option+J (Mac)\n" +
     "- Firefox: Press Ctrl+Shift+K (Windows) or Cmd+Option+K (Mac)\n\n" +
+    "Once the console is opened, you can start the game by clicking 'OK' on this alert.\n\n" +
     "Once the game starts, follow the prompts and enter your guesses. Good luck!"
 );
 
@@ -110,15 +111,13 @@ function game() {
   let won = false;
 
   while (attempts < maxAttempts) {
-    const guess = getPlayerGuess(); // Ahora getPlayerGuess ya maneja cancelación y validez.
+    const guess = getPlayerGuess();
     const result = checkGuess(guess, secret);
 
     if (guess === null) {
       console.log("🚪 Game was cancelled by the player.");
-      return; // ✅ exit game early
+      return;
     }
-
-    attempts++;
 
     if (result.isAnswerCorrect) {
       console.log(
@@ -127,6 +126,7 @@ function game() {
       won = true;
       break;
     } else {
+      attempts++;
       console.log(
         `${result.output} | Remaining attempts: ${maxAttempts - attempts}`
       );
